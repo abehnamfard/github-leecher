@@ -128,21 +128,19 @@ jobs:
               FILENAME_EXT=""
             fi
 
-            PREFIX="sci-hub.ir"
-
             if [ "$total" -gt 1 ]; then
               NUM=$(printf '%02d' $counter)
-              DL_NAME="${PREFIX}_${NUM}_${FILENAME_BASE}"
+              DL_NAME="${NUM}_${FILENAME_BASE}"
             else
-              DL_NAME="${PREFIX}_${FILENAME_BASE}"
+              DL_NAME="${FILENAME_BASE}"
             fi
 
             MAXLEN=50
             if [ ${#DL_NAME} -gt $MAXLEN ]; then
               if [ "$total" -gt 1 ]; then
-                KEEP=$((MAXLEN - ${#PREFIX} - 4))
+                KEEP=$((MAXLEN - 4))
               else
-                KEEP=$((MAXLEN - ${#PREFIX} - 1))
+                KEEP=$((MAXLEN - 1))
               fi
               DL_NAME="${DL_NAME:0:$MAXLEN}"
             fi
